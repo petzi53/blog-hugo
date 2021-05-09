@@ -1,0 +1,477 @@
+---
+title: 'Images: From R Markdown to HTML format'
+subtitle: 'An Exploration'
+author: Peter Baumgartner
+date: '2021-05-05'
+draft: no
+categories:
+  - blogdown
+tags:
+  - Hugo
+  - knitr
+  - Pandoc
+  - R Markdown
+  - markdown
+slug: images-from-rmd-to-html-format
+lastmod: '2021-05-05'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+summary: The post investigates different methods to include images in `.Rmd` files
+  and how they are treated in the `blogdown` conversion process to HTML.
+output:
+  blogdown::html_page:
+    fig_caption: true
+    number_sections: false
+    toc: true
+    toc_depth: 4
+---
+
+<script src="{{< blogdown/postref >}}index.en_files/header-attrs/header-attrs.js"></script>
+
+<div id="TOC">
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#using-r-chunk-with-knitr">Using r chunk with <code>knitr</code></a>
+<ul>
+<li><a href="#example">Example</a></li>
+<li><a href="#code-in-r-chunk">Code in R Chunk</a></li>
+<li><a href="#code-in-html">Code in HTML</a></li>
+<li><a href="#css">CSS</a></li>
+<li><a href="#summary">Summary</a></li>
+</ul></li>
+<li><a href="#markdown-via-addins-insert-image">Markdown via Addins ‘Insert Image’</a>
+<ul>
+<li><a href="#example-1">Example</a></li>
+<li><a href="#code-in-markdown">Code in markdown</a></li>
+<li><a href="#code-in-html-1">Code in HTML</a></li>
+<li><a href="#css-1">CSS</a></li>
+<li><a href="#summary-1">Summary</a></li>
+</ul></li>
+<li><a href="#visual-r-markdown-via-menu-insert">Visual R Markdown via Menu ‘Insert …’</a>
+<ul>
+<li><a href="#example-2">Example</a></li>
+<li><a href="#code-in-markdown-1">Code in markdown</a></li>
+<li><a href="#code-in-html-2">Code in HTML</a></li>
+<li><a href="#css-2">CSS</a></li>
+<li><a href="#summary-2">Summary</a></li>
+</ul></li>
+<li><a href="#hugo-figure-shortcut">Hugo figure shortcut</a>
+<ul>
+<li><a href="#example-3">Example</a></li>
+<li><a href="#code-in-html-chunk">Code in HTML chunk</a></li>
+<li><a href="#css-3">CSS</a></li>
+<li><a href="#summary-3">Summary</a></li>
+</ul></li>
+<li><a href="#results-and-conclusion">Results and Conclusion</a></li>
+</ul>
+</div>
+
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>This article is the first of a series of posts to investigate methods of inserting figures into different markdown formats. The resulting code depends on how images are included and the conversion tool they have to undergo. And — at least I think — also somewhat on the theme in use. In my case it is the blog widget of the <code>starter-academic</code> theme.</p>
+<p>Here I look at the process chain from Rmd via <a href="https://pandoc.org/">Pandoc</a> to HTML. I will inspect inserting images with the following methods:</p>
+<ul>
+<li>R chunk code via <code>knitr::include_graphics()</code>.</li>
+<li>‘Insert Image’ window via blogdown Addins</li>
+<li>‘Image …’ window vial Visual R Markdown</li>
+<li>Hugo shortcode</li>
+</ul>
+<p>Of course, you can always include HTML instead of markdown code, but this case is not of interest here as there are no changes during the conversion process.</p>
+</div>
+<div id="using-r-chunk-with-knitr" class="section level2">
+<h2>Using r chunk with <code>knitr</code></h2>
+<p>You can include external images with the <a href="https://www.rdocumentation.org/packages/knitr/versions/1.33/topics/include_graphics">knitr function <code>include_graphics()</code></a>. There are <a href="https://yihui.org/knitr/options/#plots">many chunk options</a> to specify the resulting figure, but not all are useful for external images.</p>
+<ul>
+<li>Use <code>out.width</code> and <code>out.height</code> (not <code>fig.width</code> or <code>fig.height</code>, they are for R-generated plots)</li>
+<li>Use <code>out.extra</code> to add CSS styles (see for details <a href="http://zevross.com/blog/2017/06/19/tips-and-tricks-for-working-with-images-and-figures-in-r-markdown-documents/#style-your-image-environment-with-css">Style your image environment with CSS</a>)</li>
+<li>If <code>fig.cap</code> is provided without <code>fig.alt</code>, it will also function as alternative text, which is usually not desired.</li>
+<li>Use <a href="https://bookdown.org/yihui/rmarkdown-cookbook/output-hooks.html">output hooks</a> if you want even more control.</li>
+</ul>
+<div id="example" class="section level3">
+<h3>Example</h3>
+<div class="figure" style="text-align: center"><span id="fig:img-with-knitr"></span>
+<img src="images/my-image.png" alt="Alternative text for figure 1" width="100%" />
+<p class="caption">
+Figure 1: Caption for figure 1
+</p>
+</div>
+</div>
+<div id="code-in-r-chunk" class="section level3">
+<h3>Code in R Chunk</h3>
+<pre><code>```
+{r img-with-knitr, echo=FALSE, fig.align=&#39;center&#39;, out.width=&#39;100%&#39;, fig.cap=&#39;Caption for figure 1&#39;, fig.alt=&#39;Alternative text for figure 1&#39;}
+knitr::include_graphics(&quot;images/my-image.png&quot;)
+```</code></pre>
+</div>
+<div id="code-in-html" class="section level3">
+<h3>Code in HTML</h3>
+<pre><code>```
+&lt;div class=&quot;figure&quot; style=&quot;text-align: center&quot;&gt;&lt;span id=&quot;fig:img-with-knitr&quot;&gt;&lt;/span&gt;
+    &lt;img src=&quot;images/my-image.png&quot; alt=&quot;Alternative text for figure 1&quot; width=&quot;100%&quot;&gt;
+    &lt;p class=&quot;caption&quot;&gt;
+        Figure 1: Caption for figure 1
+    &lt;/p&gt;
+&lt;/div&gt;
+```</code></pre>
+<p>It is a stand-alone feature of <code>knitr</code> to provide automatically generated figure numbers that you can reference via their id. The id is generated from the chunk name with the pattern <code>fig:&lt;chunk name&gt;</code>. The figure 1 above can be referenced with <code>\@ref(fig:img-with-knitr)</code>. Like this:</p>
+<blockquote>
+<p>For more details see Figure <a href="#fig:img-with-knitr">1</a>.</p>
+</blockquote>
+<p>{{% callout note %}} But in that case, you cannot use other methods to insert figures with numbers as <code>knitr</code> will not be aware of them. {{% /callout %}}</p>
+<p>The relevant selectors for CSS styles are <code>div.figure</code> and <code>p.caption</code>. We will see that these styles are consistent with all the other methods provided by RStudio windows. But Hugo’s figure shortcode uses the HTML tags <code>figure</code> and <code>figcaption</code>. In the <a href="https://bookdown.org/yihui/rmarkdown-cookbook/hook-html5.html">R Markdown Coobook</a> is a work around expained how you can produce these Hugo HTML tags with <code>knitr</code>.</p>
+</div>
+<div id="css" class="section level3">
+<h3>CSS</h3>
+<p>The CSS style I have used to display the image:</p>
+<pre><code>div.figure {
+        border: 1px;
+        border-style: groove;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px  rgba(0, 0, 0, 0.19);
+}
+
+p.caption {
+    text-align: center;
+    margin-top: -0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: smaller;
+}</code></pre>
+</div>
+<div id="summary" class="section level3">
+<h3>Summary</h3>
+<p>Using the <code>knitr</code> function <code>include_graphics()</code> for external images provides a rich set of image attributes (tags). It is also very flexible, especially if you are using the more complex possibilities like programming the output chunk hook.</p>
+<ul>
+<li><strong>Caption</strong>: yes</li>
+<li><strong>Format of caption</strong>: no</li>
+<li><strong>Caption automatically numbered</strong>: yes</li>
+<li><strong>Alt</strong>: yes</li>
+<li><strong>Title</strong>: no</li>
+<li><strong>Tooltip</strong>: no</li>
+<li><strong>Width/Height</strong>: yes</li>
+<li><strong>Link to</strong>: no</li>
+<li><strong>ID</strong>: yes (format: "fig:&lt;chunk name&gt;)</li>
+<li><strong>Classes</strong>: yes (with <code>out.extra</code>, example: <code>out.extra='class="border shadowed"'</code></li>
+<li><strong>CSS style</strong>: yes (with out.extra, example: <code>out.extra='style="background-color: #9ecff7; padding:10px; display: inline-block;"'</code> See blog post <a href="http://zevross.com/blog/2017/06/19/tips-and-tricks-for-working-with-images-and-figures-in-r-markdown-documents/">Tips and tricks for working with images and figures in R Markdown documents</a></li>
+<li><strong>Other</strong> (key=value): no</li>
+</ul>
+</div>
+</div>
+<div id="markdown-via-addins-insert-image" class="section level2">
+<h2>Markdown via Addins ‘Insert Image’</h2>
+<p><img src="images/adding-external-window-with-rstudio-addin-min.png" /></p>
+<p>The possibilities of RStudio Addins window for <code>blogdown</code> are sparse. But it has one big advantage: The addin helps user to provide the correct file path and copies the image to the right place.</p>
+<p>The RStudio Addins window for <code>blogdown</code> package allows only width / height arguments and alternative text. The content of the ‘alt’-attribute is in the final HTML code converted to the caption, <a href="https://blog.spotibo.com/difference-between-alt-text-and-title-text/">which is not correct</a>:</p>
+<p>The alternate text should describe what you can see on the image in case the image does not appear (e.g., is blocked) or the user applies a screen reader. ‘Alt’ text is also rendered by search engines. Every picture should have a corresponding ‘alt’ attribute The caption by contrast is not so important. It provides additional information and appears under the image explaining the content to reader who are able to see the picture.</p>
+<div id="example-1" class="section level3">
+<h3>Example</h3>
+<div class="figure">
+<img src="images/my-image.png" style="width:100.0%" alt="" />
+<p class="caption"><strong>Figure 2:</strong> Caption for this figure 2</p>
+</div>
+<p>{{% callout warning %}} You can’t use the Addins ‘Insert Image’ in Visual R Markdown mode because it protects the conversion by adding a backslash in front of the squared brackets: <code>!\[Alt text\](images/my-image.png)</code>.{{% /callout %}}</p>
+</div>
+<div id="code-in-markdown" class="section level3">
+<h3>Code in markdown</h3>
+<p>RStudio Addins window produces the following markdown code:</p>
+<pre><code>![**Figure 2:** Caption for this figure 2](images/my-image.png){width=100%}</code></pre>
+<p>I think starting with the RStudio version 1.4 (January 2021) the RStudio Addin window is superseded by the the <a href="https://rstudio.github.io/visual-markdown-editing/#/">Visual R Markdown</a> window (see <a href="#visual-r-markdown-via-menu-insert">next section</a>). If you are turning on the visual editor you can always enhance the rudimentary markdown of the addin window with all the features of Visual R Markdown.</p>
+<p>For this improvement you need to</p>
+<ul>
+<li>turn on Visual RStudio Markdown;</li>
+<li>select the image which markdown you want to enhance;</li>
+<li>click into the small round button with the three points to open up the dialog window;</li>
+<li>correct or add the desired content for the attributes (there is more under the “Attributes” tab);</li>
+<li>close the window;</li>
+</ul>
+<p>If you want to work with markdown directly you may turn off Visual RStudio Markdown.</p>
+<div class="figure">
+<img src="images/enhancing-markdown-with-visual-r-markdown-commented-min.png" alt="" />
+<p class="caption">Screenshot of the Visual RStudio Markdown window</p>
+</div>
+</div>
+<div id="code-in-html-1" class="section level3">
+<h3>Code in HTML</h3>
+<p>Here I am referring to the RStudio Addin without enhancement from the Visual R Markdown window.</p>
+<pre><code>&lt;div class=&quot;figure&quot;&gt;
+    &lt;img src=&quot;images/my-image.png&quot; alt=&quot;&quot;&gt;
+    &lt;p class=&quot;caption&quot;&gt;&lt;strong&gt;Figure 2:&lt;/strong&gt; Caption for this figure 1           
+    &lt;/p&gt;
+&lt;/div&gt;</code></pre>
+<p>As you can see: The <code>alt</code> attribute is empty, although I have filled it out!</p>
+<p>{{% callout note %}} If you do not provide text for the <code>alt</code> (= capture) attributes then there is no <code>div.figure</code> and <code>p.caption</code> class. In this case there is only the <code>img</code> tag as you can see with the image under the header <a href="#markdown-via-addins-insert-image">Markdown via Addins ‘Insert Image’</a>. {{% /callout %}}</p>
+</div>
+<div id="css-1" class="section level3">
+<h3>CSS</h3>
+<p>The conversion to HTML produced exactly the same classes as in the result with the <code>knitr</code> image inclusion (see the <a href="#css">CSS code under the knitr section</a>).</p>
+</div>
+<div id="summary-1" class="section level3">
+<h3>Summary</h3>
+<ul>
+<li><strong>Caption</strong>: yes</li>
+<li><strong>Format of caption</strong>: yes</li>
+<li><strong>Caption automatically numbered</strong>: no</li>
+<li><strong>Alt</strong>: no</li>
+<li><strong>Title</strong>: no</li>
+<li><strong>Tooltip</strong>: no</li>
+<li><strong>Width/Height</strong>: yes</li>
+<li><strong>Link to</strong>: no</li>
+<li><strong>ID</strong>: no</li>
+<li><strong>Classes</strong>: no</li>
+<li><strong>CSS style</strong>: no</li>
+<li><strong>Other</strong> (key=value): no</li>
+</ul>
+</div>
+</div>
+<div id="visual-r-markdown-via-menu-insert" class="section level2">
+<h2>Visual R Markdown via Menu ‘Insert …’</h2>
+<p><img src="images/image-dialog-window-side-by-side-min.png" /></p>
+<p>After you have turned on Visual R Markdown you can load the image window via the Menu <code>'Insert ' -&gt; 'Image…'</code> or shortcut ⇧⌘I. For an overview I put in the picture above both parts of the window side by side. You can see that it offers a very complete list of image attributes.</p>
+<p>{{% callout warning %}} If you do not include text in the “Caption/Alt” field then no HTML code for the <code>div.figure</code> and <code>p.caption</code> classes will be produced and the appropriate CSS styles cannot be applied.{{% /callout %}}</p>
+<div id="example-2" class="section level3">
+<h3>Example</h3>
+<div class="figure">
+<img src="images/my-image.png" title="title text and tooltip" id="figure3" alt="here comes a description for blind people, screen readers and search engines" alt="" />
+<p class="caption">Figure 3: Caption for this figure</p>
+</div>
+<p>Even in this enhanced window is the wrong mixture of ‘Caption’ and ‘Alt’ attributes offered. But there is a work around with the ‘Other’-field as I have shown in the screenshot.</p>
+<p>{{% callout note %}} Fill in the field “Caption/Alt” <strong>and</strong> add the <code>alt</code> attribute in the field “Others”. After the conversion to HTML the former constitutes the caption and the later the alternative text. {{% /callout %}}</p>
+<p>If you click on the inserted image and call the window again, then a slightly different window appears where fields for width and height are added and can be changed. This addition appears under the image as well by just clicking on the image.</p>
+<div class="figure">
+<img src="images/width-height-fields-after-image-inclusion-min.png" id="width-height-added" alt="Width and height field added after the image was included into the .Rmd page. Left: changed window, right: after click into the inserted window." alt="" />
+<p class="caption">Width and height field added after the image was included into the .Rmd page</p>
+</div>
+</div>
+<div id="code-in-markdown-1" class="section level3">
+<h3>Code in markdown</h3>
+<pre><code>![Figure 3: Caption for this figure](images/my-image.png &quot;title text and tooltip&quot;){#figure3 alt=&quot;here comes a description for blind people, screen readers and search engines}</code></pre>
+<p>In addition to the standard markdown code all the other attributes are added inside curly brackets.</p>
+</div>
+<div id="code-in-html-2" class="section level3">
+<h3>Code in HTML</h3>
+<pre><code>&lt;div class=&quot;figure&quot;&gt;
+    &lt;img src=&quot;images/my-image.png&quot; title=&quot;title text and tooltip&quot; id=&quot;figure3&quot;
+    alt=&quot;here comes a description for blind people, screen readers and search engines&quot;&gt;
+    &lt;p class=&quot;caption&quot;&gt;
+        Figure 3: Caption for this figure
+    &lt;/p&gt;
+&lt;/div&gt;</code></pre>
+</div>
+<div id="css-2" class="section level3">
+<h3>CSS</h3>
+<p>The conversion to HTML produced exactly the same classes as in the result with the other two methods <a href="#css"><code>knitr</code> image inclusion</a> and <a href="#css-1">Addins ‘Insert Image’</a>).</p>
+</div>
+<div id="summary-2" class="section level3">
+<h3>Summary</h3>
+<ul>
+<li><strong>Caption</strong>: yes</li>
+<li><strong>Format of caption</strong>: no</li>
+<li><strong>Caption automatically numbered</strong>: no</li>
+<li><strong>Alt</strong>: no</li>
+<li><strong>Title</strong>: yes</li>
+<li><strong>Tooltip</strong>: yes</li>
+<li><strong>Width/Height</strong>: yes</li>
+<li><strong>Link to</strong>: yes</li>
+<li><strong>ID</strong>: yes</li>
+<li><strong>Classes</strong>: yes</li>
+<li><strong>CSS style</strong>: yes</li>
+<li><strong>Other</strong> (key=value): yes</li>
+</ul>
+</div>
+</div>
+<div id="hugo-figure-shortcut" class="section level2">
+<h2>Hugo figure shortcut</h2>
+<blockquote>
+<p>You cannot simply write {{&lt; shortcode &gt;}} in R Markdown, because Pandoc is not aware of Hugo shortcodes, and may convert special characters so that Hugo can no longer recognize the shortcodes (e.g. &lt; will be converted to &lt;).<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+</blockquote>
+<p>With <a href="https://gohugo.io/getting-started/configuration-markup/#blackfriday">Blackfriday</a> as default Markdown rendering engine I used to use for shortcodes the <code>blogdown::shortcode()</code> function. But after Hugo v0.60 the default Markdown rendering engine changed to <a href="https://gohugo.io/getting-started/configuration-markup/#goldmark">Goldmark</a>. In the above quoted man page for the shortcode() function there is a also special note on this issue:</p>
+<blockquote>
+<p>Since Hugo v0.60, Hugo has switched its default Markdown rendering engine to Goldmark. One consequence is that shortcodes may fail to render. You may enable the unsafe option in the configuration file: <a href="https://gohugo.io/getting-started/configuration-markup/#goldmark" class="uri">https://gohugo.io/getting-started/configuration-markup/#goldmark</a>.</p>
+</blockquote>
+<p>I couldn’t understand this remark as for me all the Hugo shortcodes works well. But to apply it more easily I use pure HTML code chunks to prevent a conversion by Pandoc. This has the advantage that I can include Hugo’s shortcode syntax without any changes.</p>
+<div id="example-3" class="section level3">
+<h3>Example</h3>
+{{< figure src="images/my-image.png" alt="My alt text" caption="My caption text" id="shortcut-figure" numbered="true" >}}
+</div>
+<div id="code-in-html-chunk" class="section level3">
+<h3>Code in HTML chunk</h3>
+<pre><code>```{=html}
+{{&lt; figure src=&quot;images/my-image.png&quot; class=&quot;center&quot; alt=&quot;My alt text&quot; caption=&quot;My title text&quot; id=&quot;shortcut-figure&quot; numbered=&quot;true&quot; &gt;}}
+```</code></pre>
+<p>The <code>id</code> and <code>numbered</code> attributes are not provided by but they are a <a href="https://wowchemy.com/docs/content/writing-markdown-latex/#single-image">feature from the academic theme</a>.</p>
+<ul>
+<li>If you do not use <code>id</code> explicitly then Hugo generates an ID with the “figure-” followed by the caption text (e.g., <code>id="figure-my-caption-text"</code>).</li>
+<li>You can see that the numbering systems starts from scratch, e.g., it does not account for the <code>knitr</code> chunks. The same is true vice versa.</li>
+<li>Besides the already mentioned attributes Hugo also features <code>target</code>, <code>rel</code> and attribution (<code>attr</code> = text; <code>attrlink</code> = link).</li>
+</ul>
+</div>
+<div id="css-3" class="section level3">
+<h3>CSS</h3>
+<pre><code>```{=html}
+&lt;figure id=&quot;figure-shortcut-figure&quot;&gt;
+  &lt;div class=&quot;d-flex justify-content-center&quot;&gt;
+    &lt;div class=&quot;w-100&quot;&gt;
+        &lt;img alt=&quot;My alt text&quot; srcset=&quot;
+               /post/images-from-rmd-to-html-format/images/my-image_huf81a7faf920bb11d47d82b059b9dc0cf_20503_1061e20606536f4413fb34665581822b.png 400w,
+               /post/images-from-rmd-to-html-format/images/my-image_huf81a7faf920bb11d47d82b059b9dc0cf_20503_c4c18b47561549b1147ccf6dd152b5f0.png 760w,
+               /post/images-from-rmd-to-html-format/images/my-image_huf81a7faf920bb11d47d82b059b9dc0cf_20503_1200x1200_fit_lanczos_2.png 1200w&quot; src=&quot;/post/images-from-rmd-to-html-format/images/my-image_huf81a7faf920bb11d47d82b059b9dc0cf_20503_1061e20606536f4413fb34665581822b.png&quot; width=&quot;754&quot; height=&quot;226&quot; loading=&quot;lazy&quot; data-zoomable=&quot;&quot; class=&quot;medium-zoom-image&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;figcaption data-pre=&quot;Figure&amp;nbsp;&quot; data-post=&quot;:&amp;nbsp;&quot; class=&quot;numbered&quot;&gt;
+      My caption text
+  &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+```</code></pre>
+<p>The produced HTML is pretty complex, but here we are just interested in the two relevant tags for CSS styling: <code>&lt;figure&gt;</code> and <code>&lt;figcaption&gt;</code>. These two HTML tag are different to the code produced by other methods of inserting images. So maybe it would be a good idea to style both variants the same way.</p>
+</div>
+<div id="summary-3" class="section level3">
+<h3>Summary</h3>
+<ul>
+<li><strong>Caption</strong>: yes</li>
+<li><strong>Format of caption</strong>: no</li>
+<li><strong>Caption automatically numbered</strong>: yes (Academic theme)</li>
+<li><strong>Alt</strong>: yes</li>
+<li><strong>Title</strong>: no</li>
+<li><strong>Tooltip</strong>: no (zoomable)</li>
+<li><strong>Width/Height</strong>: yes</li>
+<li><strong>Link to</strong>: yes</li>
+<li><strong>ID</strong>: yes (Academic theme)</li>
+<li><strong>Classes</strong>: yes</li>
+<li><strong>CSS style</strong>: yes</li>
+<li><strong>Other</strong> (key=value): no</li>
+</ul>
+</div>
+</div>
+<div id="results-and-conclusion" class="section level2">
+<h2>Results and Conclusion</h2>
+<table>
+<caption>Table: Features of different method of inserting images in Rmd files converting to HTML</caption>
+<colgroup>
+<col width="15%" />
+<col width="8%" />
+<col width="8%" />
+<col width="9%" />
+<col width="8%" />
+<col width="51%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Attribute</th>
+<th align="center">knitr</th>
+<th align="center">Addin</th>
+<th align="center">Visual</th>
+<th align="center">Hugo</th>
+<th>Remark</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Caption</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>C. format</td>
+<td align="center">❌ <sup>2</sup></td>
+<td align="center">✅</td>
+<td align="center">❌</td>
+<td align="center">❌ <sup>2</sup></td>
+<td><sup>2</sup> standard = bold</td>
+</tr>
+<tr class="odd">
+<td>C.numbered</td>
+<td align="center">✅</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+<td align="center">✅ <sup>3</sup></td>
+<td><sup>3</sup> via ‘Academic’ theme</td>
+</tr>
+<tr class="even">
+<td>Alt</td>
+<td align="center">✅</td>
+<td align="center">❌</td>
+<td align="center">✅ <sup>4</sup></td>
+<td align="center">✅</td>
+<td><sup>4</sup> via ‘Other’-field</td>
+</tr>
+<tr class="odd">
+<td>Title</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+<td align="center">✅</td>
+<td align="center">❌</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Tooltip</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+<td align="center">✅</td>
+<td align="center">❌</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Width/Height</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Link to</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>ID</td>
+<td align="center">✅ <sup>5</sup></td>
+<td align="center">❌</td>
+<td align="center">✅</td>
+<td align="center">✅ <sup>6</sup></td>
+<td><p><sup>5</sup> <code>fig:&lt;chunk name&gt;</code></p>
+<p><sup>6</sup> <code>figure-&lt;caption text&gt;</code> or ‘Academic’ theme</p></td>
+</tr>
+<tr class="even">
+<td>CSS</td>
+<td align="center">✅</td>
+<td align="center">❌</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Other</td>
+<td align="center">❌<sup>1</sup></td>
+<td align="center">❌</td>
+<td align="center">✅ <sup>7</sup></td>
+<td align="center">✅ <sup>8</sup></td>
+<td><p><sup>1</sup>via output chunk arbitrary HTML code!</p>
+<p><sup>7</sup> free choice!</p>
+<p><sup>8</sup> <code>target</code>, <code>rel</code>, <code>attr</code>, <code>attrlink</code></p></td>
+</tr>
+</tbody>
+</table>
+<p>If we take into account that code produced by the RStudio Addin window can be improved at any time with the Visual R Markdown window then all the four offered methods are pretty similar. But keep in mind that advantages on the one hand are often counter acted by disadvantages on other areas. So — for instance — provides the conversion via Pandoc many advantages but looses also some features of Hugo or the applied theme.</p>
+<p>To sum up this this little investigation I see three patterns of decisions criteria:</p>
+<ul>
+<li>One big difference is the possibility to number the figures automatically. The Addin and Visual R Markdown windows do not provide this feature.</li>
+<li>On the other hand filling in the window fields is — especially for people who are not so comfortable with HTML or Markdown code — easier.</li>
+<li>Another decision criteria could be consistency: If you are using R chunks (which is the major reason to use the .Rmd format!) and want to be consistent throughout the file, then the decision for the <code>knitr</code> method is obvious.</li>
+</ul>
+<p>But let’s see what the other file format are producing. For people using different methods<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> for their posts perhaps the comparison inside one file format is not sufficient. Perhaps there is a method not ideal when considered only one file format but has a higher consistency when looked all file format together.</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Helper functions to write Hugo shortcodes using the R syntax<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>As with blogdown version 1.3 not all files are automatically rendered, one could choose a different file and conversion format for every post separately. This requires (1) deleting those files produced by the conversion process in the folder of the post under consideration (2) renaming the file ending of the main file and kniting/rendering the new file format again.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>

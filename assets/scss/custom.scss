@@ -1,0 +1,664 @@
+// Starter Blog Template
+// https://wowchemy.com/templates/
+
+.home-section {
+  padding: 3em 0 3em 0;
+}
+
+.home-section.wg-starter-blog-intro {
+  align-items: center;
+  justify-content: center;
+}
+
+.home-section.wg-starter-blog-intro .content {
+  text-align: center;
+}
+
+.home-section > .content {
+  width: 45em;
+  max-width: calc(100% - 4em);
+  margin: 0 auto;
+}
+
+.home-section > .content > :last-child {
+  margin-bottom: 0;
+}
+
+.home-section header {
+  margin-bottom: 1em;
+}
+
+.home-section .wg-starter-blog-intro h2 {
+  font-size: 2.25em;
+  line-height: 1.25em;
+  letter-spacing: -0.05em;
+}
+
+// Narrower container for Hello World sections (primarily Blank widget content).
+@media (min-width: 1200px) {
+  .home-section .container {
+    max-width: 880px;
+  }
+}
+@media (min-width: 992px){
+  .home-section .container {
+    max-width: 880px;
+  }
+}
+
+// Prevent stretching on About page with narrow container
+.avatar {
+  width: auto;
+  height: auto;
+  max-width: 200px;
+  max-height: 200px;
+}
+
+// Here starts my own CSS (pb)
+
+// my name is too long //
+// font-size 1.6 instead 1,75em //
+.portrait-title h2 {
+    font-size: 1.6em;
+    font-weight: 300;
+    color: #000;
+    margin: 20px 0 10px 0;
+}
+
+
+.floatright {
+	max-width: 30%;
+	width: auto;
+	height: auto;
+	float: right;
+	margin-left: 20px;
+}
+
+.floatleft {
+	max-width: 30%;
+	width: auto;
+	height: auto;
+	float: left;
+	margin-right: 20px;
+}
+
+p img {
+    border: 1px;
+    border-style: groove;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px  rgba(0, 0, 0, 0.19);
+}
+
+figure, div.figure {
+        border: 1px;
+        border-style: groove;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px  rgba(0, 0, 0, 0.19);
+}
+
+div.figure + p { margin-top: 20px; }
+
+
+p.caption {
+    text-align: center;
+    margin-top: -0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: smaller;
+}
+
+figcaption {
+    text-align: center;
+    padding-top: .5rem; /* 1.5rem seems too high */
+    font-size: .7rem !important;
+}
+
+
+
+.shadowed {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+blockquote {
+    border-left: 10px solid #F0F2F4;
+}
+blockquote p {
+    font-size: 0.85rem;
+    color: #999;
+}
+blockquote cite {
+    display: block;
+    text-align: right;
+    color: #666;
+    font-size: 1.2rem;
+}
+div.notices {
+    margin: 2rem 0;
+    position: relative;
+}
+div.notices p {
+    padding: 15px;
+    display: block;
+    font-size: 1rem;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+    color: #666;
+}
+div.notices p:first-child:before {
+    position: absolute;
+    top: -27px;
+    color: #fff;
+    font-family: FontAwesome;
+    content: '';
+    left: 10px;
+}
+div.notices p:first-child:after {
+    position: absolute;
+    top: -27px;
+    color: #fff;
+    left: 2rem;
+}
+div.notices.note {
+    border-top: 30px solid #F0B37E;
+    background: #FFF2DB;
+}
+div.notices.note p:first-child:after {
+    content: 'Note';
+}
+div.notices.warning {
+    border-top: 30px solid rgba(217, 83, 79, 0.8);
+    background: #FAE2E2;
+}
+div.notices.warning p:first-child:after {
+    content: 'Warning';
+}
+div.notices.info {
+    border-top: 30px solid #6AB0DE;
+    background: #E7F2FA;
+}
+div.notices.info p:first-child:after {
+    content: 'Info';
+}
+div.notices.tip {
+    border-top: 30px solid rgba(92, 184, 92, 0.8);
+    background: #E6F9E6;
+}
+div.notices.tip p:first-child:after {
+    content: 'Tip';
+}
+
+/* https://github.com/gcushen/hugo-academic/issues/147 */
+.container {
+  max-width: 1000px;
+}
+
+/* For 2-column article layout with TOC on right */
+.article-container {
+	max-width: 1000px;
+}
+
+.col-lg-2ish {
+  flex:0 0 20%;
+  max-width:20%;
+  padding-right: 0px !important;
+ }
+
+.col-lg-10ish {
+  flex:0 0 80%;
+  max-width:80%;
+ }
+
+#TableOfContents li a, .toc-top li a {
+	padding: .125rem .5rem;
+	font-size: .8rem;
+	color: #1a162d99;
+}
+
+#TableOfContents {
+	border-left: 1px solid #09bc8a3d;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+html, body {
+  scroll-padding-top: 100px;
+}
+
+/*---anchor headings-- */
+
+a > svg.anchor-symbol {
+  color: transparent;
+  margin-bottom: .5rem;
+  margin-left: .5rem;
+  fill: #1a162d99;
+}
+
+a > svg.anchor-symbol:hover {
+  fill: #06805E;
+  transition: fill 0.6s ease;
+}
+
+
+/* ************************************************** */
+/*  Taken from my itns-tutorial * /
+
+/*   background-image: url("../images/caution.png"); */
+
+/* using Bootstrap 4 has smaller font-size: 1rem,
+   Bootstrap 3 has 14px
+body {
+  font-size: 1.4rem !important;
+}
+*/
+
+
+:root {
+  --primary:        #3f51b5;  /* #027BFF; adaption to Ocean theme */
+  --secondary:      #6C757D;
+  --success-bg:     #dff0d8;
+  --success-fg:     #468847;
+  --stop:           #DC3545;
+  --stop-bg:        #f2dede;
+  --stop-fg:        #b94a48;
+  --warning-bg:     #fcf8e3;
+  --warning-fg:     #d1b37c;
+  --info:           #25A2B8;
+  --info-bg:        #D9EDF7;
+  --info-fg:        #317EAC;
+}
+
+.successbox {
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+  border: 2px solid var(--success-fg);
+  border-radius: 10px;
+  background: var(--success-bg) 5px center/3em no-repeat;
+  background-image: url("../icons/checkmark.png");
+  background-repeat: no-repeat;
+}
+
+.infobox {
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+  border: 2px solid var(--info-fg);
+  border-radius: 10px;
+  background: var(--info-bg) 5px center/3em no-repeat;
+  background-repeat: no-repeat;
+/*  background-image: url("../../../assets/media/icons/info.png"); */
+   background-image: url("../media/info.png");
+}
+
+.warningbox {
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+  border: 2px solid var(--warning-fg);
+  border-radius: 10px;
+  background: var(--warning-bg) 5px center/3em no-repeat;
+  background-repeat: no-repeat;
+  background-image: url("../icons/warning.png");
+}
+
+.stopbox {
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+  border: 2px solid var(--stop-fg);
+  border-radius: 10px;
+  background: var(--stop-bg) 5px center/3em no-repeat;
+  background-repeat: no-repeat;
+  background-image: url("../icons/stop.png");
+}
+
+
+
+div.hanging-indent {
+text-indent: -28px;
+padding-left: 28px;
+}
+
+/* ***************************************************** */
+/* ********************     BOOTSTRAP 3  *************** */
+/*PANELS*/
+.panel {
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+.panel-body {
+  padding: 15px;
+}
+.panel-heading {
+  padding: 10px 15px;
+  border-bottom: 1px solid transparent;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+}
+.panel-heading > .dropdown .dropdown-toggle {
+  color: inherit;
+}
+.panel-title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 16px;
+  color: inherit;
+}
+.panel-title > a,
+.panel-title > small,
+.panel-title > .small,
+.panel-title > small > a,
+.panel-title > .small > a {
+  color: inherit;
+}
+.panel-footer {
+  padding: 10px 15px;
+  background-color: #f5f5f5;
+  border-top: 1px solid #dddddd;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+.panel > .list-group,
+.panel > .panel-collapse > .list-group {
+  margin-bottom: 0;
+}
+.panel > .list-group .list-group-item,
+.panel > .panel-collapse > .list-group .list-group-item {
+  border-width: 1px 0;
+  border-radius: 0;
+}
+.panel > .list-group:first-child .list-group-item:first-child,
+.panel > .panel-collapse > .list-group:first-child .list-group-item:first-child {
+  border-top: 0;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+}
+.panel > .list-group:last-child .list-group-item:last-child,
+.panel > .panel-collapse > .list-group:last-child .list-group-item:last-child {
+  border-bottom: 0;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+.panel > .panel-heading + .panel-collapse > .list-group .list-group-item:first-child {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+.panel-heading + .list-group .list-group-item:first-child {
+  border-top-width: 0;
+}
+.list-group + .panel-footer {
+  border-top-width: 0;
+}
+.panel > .table,
+.panel > .table-responsive > .table,
+.panel > .panel-collapse > .table {
+  margin-bottom: 0;
+}
+.panel > .table caption,
+.panel > .table-responsive > .table caption,
+.panel > .panel-collapse > .table caption {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.panel > .table:first-child,
+.panel > .table-responsive:first-child > .table:first-child {
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+}
+.panel > .table:first-child > thead:first-child > tr:first-child,
+.panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child,
+.panel > .table:first-child > tbody:first-child > tr:first-child,
+.panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel > .table:first-child > thead:first-child > tr:first-child td:first-child,
+.panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child td:first-child,
+.panel > .table:first-child > tbody:first-child > tr:first-child td:first-child,
+.panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child td:first-child,
+.panel > .table:first-child > thead:first-child > tr:first-child th:first-child,
+.panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child th:first-child,
+.panel > .table:first-child > tbody:first-child > tr:first-child th:first-child,
+.panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child th:first-child {
+  border-top-left-radius: 3px;
+}
+.panel > .table:first-child > thead:first-child > tr:first-child td:last-child,
+.panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child td:last-child,
+.panel > .table:first-child > tbody:first-child > tr:first-child td:last-child,
+.panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child td:last-child,
+.panel > .table:first-child > thead:first-child > tr:first-child th:last-child,
+.panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child th:last-child,
+.panel > .table:first-child > tbody:first-child > tr:first-child th:last-child,
+.panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child th:last-child {
+  border-top-right-radius: 3px;
+}
+.panel > .table:last-child,
+.panel > .table-responsive:last-child > .table:last-child {
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+.panel > .table:last-child > tbody:last-child > tr:last-child,
+.panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child,
+.panel > .table:last-child > tfoot:last-child > tr:last-child,
+.panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child {
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+.panel > .table:last-child > tbody:last-child > tr:last-child td:first-child,
+.panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child td:first-child,
+.panel > .table:last-child > tfoot:last-child > tr:last-child td:first-child,
+.panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child td:first-child,
+.panel > .table:last-child > tbody:last-child > tr:last-child th:first-child,
+.panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child th:first-child,
+.panel > .table:last-child > tfoot:last-child > tr:last-child th:first-child,
+.panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child th:first-child {
+  border-bottom-left-radius: 3px;
+}
+.panel > .table:last-child > tbody:last-child > tr:last-child td:last-child,
+.panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child td:last-child,
+.panel > .table:last-child > tfoot:last-child > tr:last-child td:last-child,
+.panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child td:last-child,
+.panel > .table:last-child > tbody:last-child > tr:last-child th:last-child,
+.panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child th:last-child,
+.panel > .table:last-child > tfoot:last-child > tr:last-child th:last-child,
+.panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child th:last-child {
+  border-bottom-right-radius: 3px;
+}
+.panel > .panel-body + .table,
+.panel > .panel-body + .table-responsive,
+.panel > .table + .panel-body,
+.panel > .table-responsive + .panel-body {
+  border-top: 1px solid #dddddd;
+}
+.panel > .table > tbody:first-child > tr:first-child th,
+.panel > .table > tbody:first-child > tr:first-child td {
+  border-top: 0;
+}
+.panel > .table-bordered,
+.panel > .table-responsive > .table-bordered {
+  border: 0;
+}
+.panel > .table-bordered > thead > tr > th:first-child,
+.panel > .table-responsive > .table-bordered > thead > tr > th:first-child,
+.panel > .table-bordered > tbody > tr > th:first-child,
+.panel > .table-responsive > .table-bordered > tbody > tr > th:first-child,
+.panel > .table-bordered > tfoot > tr > th:first-child,
+.panel > .table-responsive > .table-bordered > tfoot > tr > th:first-child,
+.panel > .table-bordered > thead > tr > td:first-child,
+.panel > .table-responsive > .table-bordered > thead > tr > td:first-child,
+.panel > .table-bordered > tbody > tr > td:first-child,
+.panel > .table-responsive > .table-bordered > tbody > tr > td:first-child,
+.panel > .table-bordered > tfoot > tr > td:first-child,
+.panel > .table-responsive > .table-bordered > tfoot > tr > td:first-child {
+  border-left: 0;
+}
+.panel > .table-bordered > thead > tr > th:last-child,
+.panel > .table-responsive > .table-bordered > thead > tr > th:last-child,
+.panel > .table-bordered > tbody > tr > th:last-child,
+.panel > .table-responsive > .table-bordered > tbody > tr > th:last-child,
+.panel > .table-bordered > tfoot > tr > th:last-child,
+.panel > .table-responsive > .table-bordered > tfoot > tr > th:last-child,
+.panel > .table-bordered > thead > tr > td:last-child,
+.panel > .table-responsive > .table-bordered > thead > tr > td:last-child,
+.panel > .table-bordered > tbody > tr > td:last-child,
+.panel > .table-responsive > .table-bordered > tbody > tr > td:last-child,
+.panel > .table-bordered > tfoot > tr > td:last-child,
+.panel > .table-responsive > .table-bordered > tfoot > tr > td:last-child {
+  border-right: 0;
+}
+.panel > .table-bordered > thead > tr:first-child > td,
+.panel > .table-responsive > .table-bordered > thead > tr:first-child > td,
+.panel > .table-bordered > tbody > tr:first-child > td,
+.panel > .table-responsive > .table-bordered > tbody > tr:first-child > td,
+.panel > .table-bordered > thead > tr:first-child > th,
+.panel > .table-responsive > .table-bordered > thead > tr:first-child > th,
+.panel > .table-bordered > tbody > tr:first-child > th,
+.panel > .table-responsive > .table-bordered > tbody > tr:first-child > th {
+  border-bottom: 0;
+}
+.panel > .table-bordered > tbody > tr:last-child > td,
+.panel > .table-responsive > .table-bordered > tbody > tr:last-child > td,
+.panel > .table-bordered > tfoot > tr:last-child > td,
+.panel > .table-responsive > .table-bordered > tfoot > tr:last-child > td,
+.panel > .table-bordered > tbody > tr:last-child > th,
+.panel > .table-responsive > .table-bordered > tbody > tr:last-child > th,
+.panel > .table-bordered > tfoot > tr:last-child > th,
+.panel > .table-responsive > .table-bordered > tfoot > tr:last-child > th {
+  border-bottom: 0;
+}
+.panel > .table-responsive {
+  border: 0;
+  margin-bottom: 0;
+}
+.panel-group {
+  margin-bottom: 20px;
+}
+.panel-group .panel {
+  margin-bottom: 0;
+  border-radius: 4px;
+}
+.panel-group .panel + .panel {
+  margin-top: 5px;
+}
+.panel-group .panel-heading {
+  border-bottom: 0;
+}
+.panel-group .panel-heading + .panel-collapse > .panel-body,
+.panel-group .panel-heading + .panel-collapse > .list-group {
+  border-top: 1px solid #dddddd;
+}
+.panel-group .panel-footer {
+  border-top: 0;
+}
+.panel-group .panel-footer + .panel-collapse .panel-body {
+  border-bottom: 1px solid #dddddd;
+}
+.panel-default {
+  border-color: #dddddd;
+}
+.panel-default > .panel-heading {
+  color: #333333;
+  background-color: #f5f5f5;
+  border-color: #dddddd;
+}
+.panel-default > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #dddddd;
+}
+.panel-default > .panel-heading .badge {
+  color: #f5f5f5;
+  background-color: #333333;
+}
+.panel-default > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #dddddd;
+}
+.panel-primary {
+  border-color: var(--primary); /* #337ab7; */
+}
+.panel-primary > .panel-heading {
+  color: #ffffff;
+  background-color: var(--primary); /* #337ab7; */
+  border-color: var(--primary); /* #337ab7; */
+}
+.panel-primary > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: var(--primary); /* #337ab7; */
+}
+.panel-primary > .panel-heading .badge {
+  color: var(--primary); /* #337ab7; */
+  background-color: #ffffff;
+}
+.panel-primary > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: var(--primary); /* #337ab7; */
+}
+.panel-success {
+  border-color: #d6e9c6;
+}
+.panel-success > .panel-heading {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+.panel-success > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #d6e9c6;
+}
+.panel-success > .panel-heading .badge {
+  color: #dff0d8;
+  background-color: #3c763d;
+}
+.panel-success > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #d6e9c6;
+}
+.panel-info {
+  border-color: #bce8f1;
+}
+.panel-info > .panel-heading {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+.panel-info > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #bce8f1;
+}
+.panel-info > .panel-heading .badge {
+  color: #d9edf7;
+  background-color: #31708f;
+}
+.panel-info > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #bce8f1;
+}
+.panel-warning {
+  border-color: #faebcc;
+}
+.panel-warning > .panel-heading {
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+}
+.panel-warning > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #faebcc;
+}
+.panel-warning > .panel-heading .badge {
+  color: #fcf8e3;
+  background-color: #8a6d3b;
+}
+.panel-warning > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #faebcc;
+}
+.panel-danger {
+  border-color: #ebccd1;
+}
+.panel-danger > .panel-heading {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+.panel-danger > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #ebccd1;
+}
+.panel-danger > .panel-heading .badge {
+  color: #f2dede;
+  background-color: #a94442;
+}
+.panel-danger > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #ebccd1;
+}
+/* ***************************************************** */
+/* ********************     BOOTSTRAP 3  *************** */

@@ -1,0 +1,234 @@
+---
+title: Images in Rmarkdown Files
+author: Peter Baumgartner
+date: '2021-05-07'
+categories:
+  - blogdown
+tags:
+  - Hugo
+  - knitr
+  - Pandoc
+  - R Markdown
+slug: images-in-rmarkdown-files
+lastmod: '2021-05-07T08:43:11+02:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+
+summary: The post investigates different methods to include images in `.Rmd` files
+  and how they are treated in the `blogdown` conversion process to .markdown files.
+---
+
+## Using R chunk with `knitr`
+
+Using R chunks with `knitr` has the full features as outlined in the post [Images: From R Markdown to HTML format](../images-from-rmd-to-html-format/#example).
+
+### Example
+
+<div class="figure" style="text-align: center">
+<img src="images/my-image.png" alt="Caption for this figure 1" width="100%" />
+<p class="caption">Figure 1: Caption for this figure 1</p>
+</div>
+
+### Code in R Chunk
+
+    ```
+    {r img-with-knitr, echo=FALSE, fig.align='center', out.width='100%', fig.cap='Caption for this figure 1'}
+    knitr::include_graphics("images/my-image.png")
+    ```
+
+### Code in HTML
+
+    ```
+    <div class="figure" style="text-align: center">
+        <span id="fig:img-with-knitr"></span>
+        <img src="images/my-image.png" alt="Caption for this figure 1" width="100%"/>
+        <p class="caption">Figure 1: Caption for this figure 1</p>
+    </div>
+
+    ```
+
+### CSS
+
+    div.figure {
+            border: 1px;
+            border-style: groove;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px  rgba(0, 0, 0, 0.19);
+    }
+
+    p.caption {
+        text-align: center;
+        margin-top: -0.5rem;
+        margin-bottom: 0.5rem;
+        font-size: smaller;
+    }
+
+### Summary
+
+-   **Caption**: yes
+-   **Format of caption**: no
+-   **Caption automatically numbered**: yes
+-   **Alt**: yes
+-   **Title**: no
+-   **Tooltip**: no
+-   **Width/Height**: yes
+-   **Link to**: no
+-   **ID**: yes (format: "fig:\<chunk name\>)
+-   **Classes**: yes (with `out.extra`, example: `out.extra='class="border shadowed"'`
+-   **CSS style**: yes (with out.extra, example: `out.extra='style="background-color: #9ecff7; padding:10px; display: inline-block;"'` See blog post [Tips and tricks for working with images and figures in R Markdown documents](http://zevross.com/blog/2017/06/19/tips-and-tricks-for-working-with-images-and-figures-in-r-markdown-documents/)
+-   **Other** (key=value): no
+
+## Markdown via Addins 'Insert Image'
+
+The behavior is the same as in [Images in .md files](../images-in-md-files).
+
+Using the RStudio Addin window without the width or height parameter it just generate markdown code. Is the width or height parameter included then HTML is generated but without `div.figure` and `p.caption` class. There is no caption visible and the CSS styling has to be done with `<img>` tag.
+
+### Example
+
+<img src="images/my-image.png" alt="Alt text" width="100%"/>
+
+{{% callout warning %}} You can't use the Addins 'Insert Image' in Visual R Markdown mode because it protects the conversion by adding a backslash in front of the squared brackets: `!\[Alt text\](images/my-image.png)`.{{% /callout %}}
+
+### Code in markdown
+
+The first line is the markdown code for images without width/height parameters. The second line has a width parameter.
+
+    ![Alt text](images/my-image.png)
+    <img src="images/my-image.png" alt="Alt text" width="100%"/> 
+
+### Code in HTML
+
+The first line is the HTML code for images without width/height parameters. The second line has a width parameter.
+
+    <p><img src="images/my-image.png" alt="Alt text"></p> 
+    <img src="images/my-image.png" alt="Alt text" width="100%">
+
+### CSS
+
+If the RStudio Addin window is used, then the `img` tag should be wrapped into a paragraph. Otherwise it would be generate a conflict with other tags related with images.
+
+
+```css
+p img {
+    border: 1px;
+    border-style: groove;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px  rgba(0, 0, 0, 0.19);
+}
+
+```
+
+
+<style type="text/css">
+p img {
+    border: 1px;
+    border-style: groove;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px  rgba(0, 0, 0, 0.19);
+}
+
+</style>
+
+### Summary
+
+So -- all in all -- the Addins window is not very useful. The only advantage is the generation of the filepath and the copy of the image in the correct folder.
+
+-   **Caption**: yes
+-   **Format of caption**: yes
+-   **Caption automatically numbered**: no
+-   **Alt**: no
+-   **Title**: no
+-   **Tooltip**: no
+-   **Width/Height**: yes
+-   **Link to**: no
+-   **ID**: no
+-   **Classes**: no
+-   **CSS style**: no
+-   **Other** (key=value): no
+
+## Visual R Markdown via Menu 'Insert ...'
+
+Again the same behavior as in [Images in .md files](../images-in-md-files).
+
+With a `.Rmarkdown` file Visual R Markdown offers only a reduced first part of the window as it is presented in an `.Rmd` file. In contrast to the .Rmd version it lacks the fields to add width and height parameter.
+
+![Window for inserting images in .md files with Visual R Markdown window with reduced number of input fields.](images/reduced-window-version-for-md-files-min.png "text for title and tooltip")
+
+But more important: There is no `caption`! The text for the field 'Caption/Alt' includes the text only for the `alt`-attribute!
+
+### Example
+
+![Alt text (no caption!)](images/my-image.png "Text for title and tooltip")
+
+### Code in markdown
+
+    ![Alt text (no caption!)](images/my-image.png "Text for title and tooltip")
+
+### Code in HTML
+
+    <p><img src="images/my-image.png" alt="Alt text (no caption!)" title="Text for title and tooltip"></p>
+
+### CSS
+
+The same as with the RStudio Addin window.
+
+### Summary
+
+-   **Caption**: no
+-   **Format of caption**: no
+-   **Caption automatically numbered**: no
+-   **Alt**: no
+-   **Title**: yes
+-   **Tooltip**: yes
+-   **Width/Height**: no
+-   **Link to**: yes
+-   **ID**: no
+-   **Classes**: no
+-   **CSS style**: no
+-   **Other** (key=value): no
+
+## Hugo figure shortcut
+
+Here again -- as in the .md file -- we do not need to protect the shortcode. We can insert it either via the Visual R Markdown menu `Insert -> Shortcode` or write the code directly into markdown.
+
+### Example
+
+{{< figure src="images/my-image.png" class="center" alt="my-alt text" caption="Figure 4: my title-text" >}}
+
+Everything I said about the features of the figure shortcode in the post [Images: From R Markdown to HTML format](../images-from-rmd-to-html-format/#example-3) applies for `.md` and for .Rmarkdown files as well.
+
+### Summary
+
+-   **Caption**: yes
+-   **Format of caption**: no
+-   **Caption automatically numbered**: yes (Academic theme)
+-   **Alt**: yes
+-   **Title**: no
+-   **Tooltip**: no (zoomable)
+-   **Width/Height**: yes
+-   **Link to**: yes
+-   **ID**: yes (Academic theme)
+-   **Classes**: yes
+-   **CSS style**: yes
+-   **Other** (key=value): no
+
+## Results and Conclusion
+
+| Attribute    | knitr | Addin | Visual | Hugo | Remark                                                                           |
+|--------------|:-----:|:-----:|:------:|:----:|----------------------------------------------------------------------------------|
+| Caption      |   ✅   |   ❌   |   ❌    |  ✅   |                                                                                  |
+| C. format    |  ❌ 1  |   ❌   |   ❌    | ❌ 1  | 1\) standard = bold                                                              |
+| C.numbered   |   ✅   |   ❌   |   ❌    | ✅ 2  | 2\) via 'Academic' theme                                                         |
+| Alt          |   ✅   |   ❌   |   ❌    |  ✅   |                                                                                  |
+| Title        |   ❌   |   ❌   |   ✅    |  ❌   |                                                                                  |
+| Tooltip      |   ❌   |   ❌   |   ✅    |  ❌   |                                                                                  |
+| Width/Height |   ✅   |   ✅   |   ❌    |  ✅   |                                                                                  |
+| Link to      |   ❌   |   ❌   |   ✅    |  ✅   |                                                                                  |
+| ID           |  ✅ 3  |   ❌   |   ❌    | ✅ 4  | 3\) `fig:<chunk name>` 4) `figure-<caption text>` or 'Academic' theme            |
+| CSS          |   ✅   |   ❌   |   ❌    |  ✅   |                                                                                  |
+| Other        |  ❌5   |   ❌   |   ❌    | ✅ 6  | 1\) via output chunk arbitrary HTML code! 4) `target`, `rel`, `attr`, `attrlink` |
+
+**Table**: Features of different method of inserting images in `.Rmarkdown` files converting to `.markdown` using Pandoc and Hugo/Goldmark.
+
+Although both windows (Addins and Visual R Markdown windows) are not equipped with all the necessary attributes, here we have in contrast to `.md` files also the alternative with `knitr` chunks. So in way: `.Rmarkdown` files are the best of both worlds! (This is also true with the Table of Contents, which works here as well.)
