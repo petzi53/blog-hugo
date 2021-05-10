@@ -87,13 +87,13 @@ math: false
 diagram: false
 privacy_pack: true
 edit_page:
-  repo_url: 'https://github.com/petzi53/hugo-blog'
+  repo_url: 'https://github.com/petzi53/blog-hugo'
   content_dir: ''
   repo_branch: main
   editable:
-    page: true
+    page: false
     post: true
-    book: false
+    book: true
 show_related:
   book: true
   page: false

@@ -36,12 +36,15 @@ social:
   icon_pack: fab
   label: Follow me on Twitter
   link: https://twitter.com/pbaumgartner
+- icon: github
+  icon_pack: fab
+  link: https://github.com/petzi53/blog-hugo
+  label: "Edit/Fork me"
+  display:
+    header: true
 - icon: graduation-cap
   icon_pack: fas
   link: https://scholar.google.com/citations?user=mKCNn9kAAAAJ&hl=en
-- icon: github
-  icon_pack: fab
-  link: https://github.com/petzi53
 - icon: zotero
   icon_pack: ai
   link: "https://www.zotero.org/petzi"
@@ -54,6 +57,8 @@ social:
 - icon: wordpress
   icon_pack: fab
   link: "https://peter.baumgartner.name"
+  display:
+    header: true
 - icon: linkedin
   icon_pack: fab
   link: https://www.linkedin.com/in/peter-baumgartner-8879036/
