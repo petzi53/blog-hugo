@@ -12,3 +12,13 @@
   name = "About"
   url = "about/"
   weight = 20
+
+[[main]]
+  name = "Contact"
+  url = "/about#contact"
+  weight = 30
+
+[[main]]
+  name = "Contact2"
+  url = "/contactYY"
+  weight = 40

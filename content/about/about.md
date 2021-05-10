@@ -2,7 +2,7 @@
 active: true
 author: admin
 headless: true
-title: Hello
+title: About me
 weight: 10
 widget: about
 ---

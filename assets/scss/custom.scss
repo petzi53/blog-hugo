@@ -54,6 +54,39 @@
   max-height: 200px;
 }
 
+/*----NAV LINK HOVER ANIMATION -----*/
+/* from Desiree: https://github.com/dcossyleon/blogdown_desiree/blob/master/assets/scss/custom.scss */
+
+/* stroke */
+
+.navbar-nav a.nav-link,
+.navbar-nav a.nav-link:after,
+.navbar-nav a.nav-link:before {
+  transition: all .5s;
+}
+
+.navbar-nav a.nav-link {
+  position: relative;
+}
+
+.navbar-nav a.nav-link:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: '.'; /* make invisible, dot beneath links */
+  color: transparent;
+  background: #ffeb3c; /* #06805E; */
+  height: 2px;
+}
+
+.navbar-nav a.nav-link:hover:after {
+  width: 80%;
+}
+
+
 // Here starts my own CSS (pb)
 
 // my name is too long //
