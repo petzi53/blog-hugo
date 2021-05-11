@@ -17,7 +17,7 @@ summary: In this fourth part of the tutorial I will explain a method how to brin
 
 #### Bring your website online: From blogdown via GitHub to Netlify
 
-We start this last part of the tutorial where we have finished last time  ([picture 10 of part 3]({{% relref "2017-09-08-blogdown-tutorial-part-3#figure-a-warning-informs-you-to-create-a-file-with-a-specified-text" %}})).
+We start this last part of the tutorial where we have finished last time  ([picture 10 of part 3](/post/blogdown-tutorial-part-3#figure-a-warning-informs-you-to-create-a-file-with-a-specified-text)).
 
 1. **Ignore public folder**: One benefit of using Netlify is that that there is no need to upload your large public folder to get your website. Netlify will compile the source files and build by its own the Hugo site. You should take advantage of this feature by telling RStudio that the `public`-folder does not need version control, committed and uploaded. Select the public folder under the Git tab on the right upper pane and select from the configuration menu `ignore…`. {{< figure src="images/ignore-public-folder.png" title="Ignore public folder" >}}
 
