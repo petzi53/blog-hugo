@@ -1,13 +1,14 @@
 title: "Thought splinters"
 baseurl: ''
 copyright: ''
+timeout (20000)
 enableGitInfo: no
 defaultContentLanguage: en
 hasCJKLanguage: no
 defaultContentLanguageInSubdir: no
 removePathAccents: yes
 summaryLength: 30
-paginate: 10
+paginate: 30
 enableEmoji: yes
 enableRobotsTXT: yes
 footnotereturnlinkcontents: <sup>^</sup>
