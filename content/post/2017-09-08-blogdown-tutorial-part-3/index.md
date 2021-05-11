@@ -1,5 +1,5 @@
 ---
-title: Blogdown tutorial (Part 3)
+title: 'Blogdown tutorial (Part 3)'
 author: Peter Baumgartner
 date: '2017-09-08'
 categories:
