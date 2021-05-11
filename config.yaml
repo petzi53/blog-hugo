@@ -1,7 +1,7 @@
 title: "Thought splinters"
 baseurl: ''
 copyright: ''
-timeout (20000)
+timeout (30000)
 enableGitInfo: no
 defaultContentLanguage: en
 hasCJKLanguage: no
