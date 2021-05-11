@@ -9,7 +9,6 @@ tags:
   - blogdown
   - hugo
   - installation
-slug: blogdown-tutorial-01
 summary: How to install Hugo with a specified theme using R, RStudio and blogdown
 slides:
   # Choose a theme from https://github.com/hakimel/reveal.js#theming
@@ -93,7 +92,7 @@ ___
 
 ## 4d Click "Create Project" button
 
-Click "Create Project" Button und wait some seconds. RStudio will install
+Click "Create Project" Button and wait some seconds. RStudio will install
 
 - Hugo
 - your selected theme and

@@ -9,6 +9,11 @@
   weight = 10
 
 [[main]]
+  name = "Slides"
+  url = "slide/"
+  weight = 15
+
+[[main]]
   name = "About"
   url = "about/"
   weight = 20
