@@ -14,7 +14,6 @@ disable_comments: no
 draft: no
 
 ---
-
 With this article, I begin a new series of step-by-step instructions focused on installing and working with open source tools on your own server space. I've learned some of these procedures participating as an audience member in a sequence of German web talks by [Guido Brombrach](https://www.oercamp.de/webinare/ostools/), organized by [OERcamp](https://www.oercamp.de/).
 
 ## 1. Step: Go to the URL of your hosting service

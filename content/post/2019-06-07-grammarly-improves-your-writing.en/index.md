@@ -15,7 +15,6 @@ toc: no
 disable_comments: no
 draft: no
 ---
-
 ## My story with Grammarly
 
 This article reports on my experiences with the premium version of Grammarly, an AI-powered web service for grammar and spell checking. As this is going to be a very positive review, I feel the obligation to publicly disclose that I am not in any way affiliated with Grammarly Inc., the enterprise behind this product.
@@ -32,7 +31,7 @@ I do not intend to write a tutorial for Grammarly, but I will give you some exam
 
 ### Use case 1: An already published article
 
-I took a [lengthy article](/2017/10/17/what-is-obvious-and-for-whom/) (about 2.500 words), which I had published two years ago. I copied the markdown formatted text directly into the web interface of Grammarly. This article has a somewhat philosophical flavor so that technical concepts, which Grammarly has not in its dictionary, didn't play a role. I had the text already cleaned up form spelling errors using RStudio's spell checker. Nevertheless, Grammarly came up with more than 125 suggestions for improvements. I didn't think that my English is so bad. How embarrassing!
+I took a [lengthy article]({{% relref "2017-10-17-what-is-obvious-and-for-whom" %}}) (about 2.500 words), which I had published two years ago. I copied the markdown formatted text directly into the web interface of Grammarly. This article has a somewhat philosophical flavor so that technical concepts, which Grammarly has not in its dictionary, didn't play a role. I had the text already cleaned up form spelling errors using RStudio's spell checker. Nevertheless, Grammarly came up with more than 125 suggestions for improvements. I didn't think that my English is so bad. How embarrassing!
 
 When I inspected the text in detail, it turned out, that 19 suggested "improvements" weren't useful, as they addressed quotes from English books by famous people like [Michael Polanyi](https://www.newworldencyclopedia.org/entry/Michael_Polanyi) or [Ludwig Wittgenstein](https://www.iep.utm.edu/wittgens/). Another four recommendations related to markdown formatted text, where corrections would have resulted in syntax errors. But still there remained about 100 helpful tips! Statistically, Grammarly advised me about possible improvements every 25 words. I was shocked, and even a little depressed!
 
@@ -120,6 +119,5 @@ Last, but not least, I would like to add that Grammarly is not idiot-proof. You 
 
 {{< figure src="images/screenshot08-min.png" alt="Screenshot of a wrong recommendation by Grammarly" caption="Grammarly is not idiot-proof. Your own intelligent judgement is still required." numbered="true">}}
 
-<span class='Z3988' title='url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rft.type=blogPost&amp;rft.title=Grammarly%20improves%20your%20writing%20%3A%3A%20Open%20Science%20Education&amp;rft.source=Grammarly%20improves%20your%20writing&amp;rft.rights=CC%20BY-SA%204.0&amp;rft.description=The%20article%20reports%20on%20my%20experiences%20with%20the%20premium%20version%20of%20Grammarly%2C%20an%20AI-powered%20web%20service%20for%20grammar%20and%20spell%20checking.%20As%20this%20is%20going%20to%20be%20a%20very%20positive%20review%2C%20I%20want%20to%20disclose%20that%20I%20am%20not%20affiliated%20in%20any%20way%20with%20Grammarly%20Inc.%2C%20the%20enterprise%20behind%20this%20product.&amp;rft.identifier=https%3A%2F%2Fnotes.peter-baumgartner.net%2F2019%2F06%2F07%2Fgrammarly-improves-your-writing%2F&amp;rft.aufirst=Peter&amp;rft.aulast=Baumgartner&amp;rft.au=Peter%20Baumgartner&amp;rft.date=2019-06-07&amp;rft.language=EN'></span>
-
 <span class='Z3988' title='url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rft.type=blogPost&amp;rft.title=Grammarly%20improves%20your%20writing%20::%20Open%20Science%20Education&amp;rft.source=Grammarly%20improves%20your%20writing&amp;rft.rights=CC%20BY-SA%204.0&amp;rft.description=The%20article%20reports%20on%20my%20experiences%20with%20the%20premium%20version%20of%20Grammarly,%20an%20AI-powered%20web%20service%20for%20grammar%20and%20spell%20checking.%20As%20this%20is%20going%20to%20be%20a%20very%20positive%20review,%20I%20want%20to%20disclose%20that%20I%20am%20not%20affiliated%20in%20any%20way%20with%20Grammarly%20Inc.,%20the%20enterprise%20behind%20this%20product.&amp;rft.identifier=https%3A%2F%2Fnotes.peter-baumgartner.net%2F2019%2F06%2F07%2Fgrammarly-improves-your-writing&amp;rft.aufirst=Peter&amp;rft.aulast=Baumgartner&amp;rft.au=Peter%20Baumgartner&amp;rft.date=&amp;rft.language=en'></span>
+

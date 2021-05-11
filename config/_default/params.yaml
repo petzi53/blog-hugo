@@ -106,11 +106,12 @@ section_pager: false
 docs_section_pager: true
 sharing: true
 copyright_license:
-  enable: false
-  allow_derivatives: false
+  enable: true
+  allow_derivatives: true
   share_alike: true
-  allow_commercial: false
-  notice: 'This work is licensed under {license}'
+  allow_commercial: true
+  notice: 'This work by Peter Baumgartner is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.<br />
+  Permissions beyond the scope of this license may be available at my [contact page](/about#contact). Powered by [blogdown](https://bookdown.org/yihui/blogdown/) and [Hugo](https://gohugo.io/).'
 abstract_length: 135
 plugins_js: []
 plugins_scss: ["custom"]
